@@ -1,0 +1,15 @@
+[package]
+# The name of the library here matches the name in `src/lib.rs` AND the module that Python tries to import.
+name = "testlib"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+# The name of the library here matches the name in `src/lib.rs` AND the module that Python tries to import.
+name = "testlib"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+numpy = "0.20.0"
+pyo3 = { version = "0.20.0", features = ["extension-module"] }

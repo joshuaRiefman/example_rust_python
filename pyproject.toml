@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools", "setuptools-rust"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "testlib"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+version = "1.0"
+
+[[tool.setuptools-rust.ext-modules]]
+# Private Rust extension module to be nested into the Python package
+target = "testlib"  # The last part of the name (e.g. "_lib") has to match lib.name in Cargo.toml,
+
+path = "Cargo.toml"      # Default value, can be omitted
+binding = "PyO3"         # Default value, can be omitted
+py-limited-api = "auto"  # Default value, can be omitted
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
